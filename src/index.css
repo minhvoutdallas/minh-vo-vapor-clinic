@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #0A0A14;
+  --color-accent: #4e45f8;
+  --color-background: #F0EFF4;
+  --color-text-dark: #18181B;
+  --font-heading: 'Sora', sans-serif;
+  --font-drama: 'Space Grotesk', sans-serif;
+  --font-data: 'Fira Code', monospace;
+}
+
+:root {
+  color: var(--color-text-dark);
+  background-color: var(--color-background);
+  font-family: var(--font-heading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Global noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+}
+
+/* Magnetic Button Utility */
+.magnetic-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.03);
+}
+
+.magnetic-btn .bg-sweep {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.magnetic-btn:hover .bg-sweep {
+  left: 0;
+}
+
+.interactive-link {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.interactive-link:hover {
+  transform: translateY(-1px);
+}
