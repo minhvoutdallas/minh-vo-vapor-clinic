@@ -14,7 +14,7 @@ const EMAIL = "qmivo.sg@gmail.com";
 const ABOUT_ME_IMAGE = "/MinhVo.jfif";
 const RESUME_PDF = "/Minh_Vo_Resume.pdf"; // PDF should be placed in the public folder
 
-const NAV_LINKS = ["Expertise", "Philosophy", "Protocol", "About", "Resume", "Connect"];
+const NAV_LINKS = ["Expertise", "Philosophy", "Protocol", "About", "Resume"];
 
 // Preset D: Vapor Clinic Data (Revised for IT/Datacenter Theme with #4e45f8 accents)
 const HERO_IMG = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2938&auto=format&fit=crop"; // Server racks / Datacenter
