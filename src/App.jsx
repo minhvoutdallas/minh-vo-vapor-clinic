@@ -400,17 +400,17 @@ const Protocol = () => {
   return (
     <section id="protocol" ref={containerRef} className="relative z-30">
       <ProtocolCard
-        index={1} step={1} title="Architect"
+        index={1} step={1} title="Engineer"
         desc="Design governance frameworks, data source connections, and platform infrastructure before scaling to the enterprise."
         icon={<LayoutGrid size={120} className="text-[#4e45f8] animate-[spin_20s_linear_infinite]" strokeWidth={1} />}
       />
       <ProtocolCard
-        index={2} step={2} title="Automate"
+        index={2} step={2} title="Automation"
         desc="Deploy production ETL workflows across Snowflake, Oracle, and SharePoint — eliminating hours of manual analysis weekly."
         icon={<Activity size={120} className="text-[#F0EFF4] filter drop-shadow-[0_0_15px_#4e45f8] relative z-10" strokeWidth={1.5} />}
       />
       <ProtocolCard
-        index={3} step={3} title="Govern"
+        index={3} step={3} title="Governance"
         desc="Migrate workflows from Sandbox to Prod with compliance checklists, platform separation, and zero-downtime operations."
         icon={<Shield size={120} className="text-[#4e45f8]" />}
       />
