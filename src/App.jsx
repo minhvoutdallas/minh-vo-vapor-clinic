@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Terminal, Activity, Server, Shield, Database, LayoutGrid, Download, Linkedin } from 'lucide-react';
+import { ArrowRight, Terminal, Activity, Server, Shield, Database, LayoutGrid, Download, Linkedin, ExternalLink, Github } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,10 +12,16 @@ const TAGLINE = "Scalable Analytics. Governed Platforms.";
 const CTA_TEXT = "Connect with me";
 const EMAIL = "qmivo.sg@gmail.com";
 const LINKEDIN_URL = "https://www.linkedin.com/in/minhqvo/";
+const GITHUB_PROFILE_URL = "https://github.com/minhvoutdallas";
 const ABOUT_ME_IMAGE = "/MinhVo.jfif";
 const RESUME_PDF = "/Minh_Vo_Resume.pdf";
 
-const NAV_LINKS = ["Expertise", "Philosophy", "Protocol", "About", "Resume", "Portfolio"];
+// --- Live Streamlit dashboard (Phase 3 of the crypto-analytics project) ---
+// Paste your deployed Streamlit Community Cloud URL here (no trailing slash),
+// and your public GitHub repo URL below it.
+const LIVE_DASHBOARD_URL = "https://crypto-analytics-jaysd9h6dwobmc2wr4jh5q.streamlit.app";      
+const GITHUB_REPO_URL = "https://github.com/minhvoutdallas"; 
+const NAV_LINKS = ["Expertise", "Philosophy", "Protocol", "About", "Resume", "Live", "Portfolio"];
 
 // Hero & Philosophy background images (keeping datacenter theme)
 const HERO_IMG = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2938&auto=format&fit=crop";
@@ -53,8 +59,11 @@ const Navbar = () => {
         ))}
       </div>
       <div className="flex items-center gap-3">
-        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full border border-current/20 hover:bg-[#4e45f8] hover:text-[#F0EFF4] hover:border-[#4e45f8] transition-all">
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2.5 rounded-full border border-current/20 hover:bg-[#4e45f8] hover:text-[#F0EFF4] hover:border-[#4e45f8] transition-all">
           <Linkedin size={16} />
+        </a>
+        <a href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2.5 rounded-full border border-current/20 hover:bg-[#4e45f8] hover:text-[#F0EFF4] hover:border-[#4e45f8] transition-all">
+          <Github size={16} />
         </a>
         <a href={`mailto:${EMAIL}`} className="magnetic-btn px-6 py-2.5 rounded-full bg-[#4e45f8] text-[#F0EFF4] font-heading font-semibold text-sm hover:!text-[#18181B]">
           <span className="bg-sweep bg-[#F0EFF4]"></span>
@@ -646,6 +655,72 @@ const Portfolio = () => {
   );
 };
 
+// --- Live Project: embedded Streamlit dashboard ---
+const LiveDashboard = () => {
+  const TECH = ["Python", "Coinbase API", "Neon Postgres", "dbt-core", "GitHub Actions", "Streamlit"];
+
+  return (
+    <section id="live" className="bg-[#F0EFF4] text-[#0A0A14] py-32 px-8 md:px-16 relative z-30">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <div className="font-data text-[#4e45f8] text-sm uppercase tracking-widest font-bold mb-4">// LIVE SYSTEM</div>
+          <h2 className="font-drama font-bold text-5xl md:text-6xl text-[#0A0A14] mb-4">Real-Time Analytics Pipeline</h2>
+          <p className="font-heading text-lg text-[#18181B]/70 max-w-2xl mx-auto">
+            A live, end-to-end data platform: a Python collector streams crypto trades into Postgres,
+            dbt models them into tested marts, and this dashboard queries them live — refreshing every minute.
+          </p>
+        </div>
+
+        {/* Tech tags */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {TECH.map(t => (
+            <span key={t} className="px-4 py-1.5 bg-white border border-[#18181B]/10 rounded-full font-data text-xs text-[#18181B]/60 font-medium">{t}</span>
+          ))}
+        </div>
+
+        {/* Dashboard frame (styled like an app window) */}
+        <div className="bg-[#0A0A14] rounded-[2.5rem] p-3 md:p-4 border border-[#4e45f8]/20 shadow-[0_0_50px_rgba(78,69,248,0.15)]">
+          {/* fake browser chrome */}
+          <div className="flex items-center justify-between px-4 py-3">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#febc2e]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#28c840]"></div>
+            </div>
+            <div className="flex items-center gap-2 bg-[#11111A] px-3 py-1 rounded-full border border-[#4e45f8]/20">
+              <div className="w-2 h-2 rounded-full bg-[#4e45f8] animate-pulse shadow-[0_0_5px_#4e45f8]"></div>
+              <span className="font-data text-[10px] uppercase tracking-wider text-[#F0EFF4]/70">Live · refreshes every 60s</span>
+            </div>
+          </div>
+
+          {/* the embedded Streamlit app */}
+          <iframe
+            src={`${LIVE_DASHBOARD_URL}/?embed=true`}
+            title="Real-Time Crypto Analytics Dashboard"
+            loading="lazy"
+            className="w-full rounded-[1.5rem] bg-white"
+            style={{ height: '720px', border: 0 }}
+          />
+        </div>
+
+        {/* Action buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
+          <a href={LIVE_DASHBOARD_URL} target="_blank" rel="noopener noreferrer"
+             className="magnetic-btn px-8 py-4 rounded-full bg-[#4e45f8] text-[#F0EFF4] font-heading font-semibold hover:!text-[#0A0A14] shadow-[0_0_20px_rgba(78,69,248,0.2)]">
+            <span className="bg-sweep bg-[#F0EFF4]"></span>
+            <span className="relative z-10 flex items-center gap-2">Open full dashboard <ExternalLink size={16} /></span>
+          </a>
+          <a href={GITHUB_REPO_URL} target="_blank" rel="noopener noreferrer"
+             className="px-8 py-4 rounded-full border border-[#18181B]/15 text-[#0A0A14] font-heading font-semibold hover:border-[#4e45f8] hover:text-[#4e45f8] transition-all flex items-center gap-2">
+            <Github size={16} /> View source
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = () => {
   return (
     <footer id="connect" className="bg-[#0A0A14] text-[#F0EFF4] pt-24 pb-12 px-8 md:px-16 relative z-40 rounded-t-[4rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
@@ -657,8 +732,11 @@ const Footer = () => {
             <span className="bg-sweep bg-[#F0EFF4]"></span>
             <span className="relative z-10 flex items-center gap-3">{CTA_TEXT} <ArrowRight /></span>
           </a>
-          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="magnetic-btn p-5 rounded-full border border-[#4e45f8]/40 text-[#F0EFF4] hover:bg-[#4e45f8] hover:border-[#4e45f8] transition-all shadow-[0_0_20px_rgba(78,69,248,0.2)]">
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="magnetic-btn p-5 rounded-full border border-[#4e45f8]/40 text-[#F0EFF4] hover:bg-[#4e45f8] hover:border-[#4e45f8] transition-all shadow-[0_0_20px_rgba(78,69,248,0.2)]">
             <Linkedin size={24} />
+          </a>
+          <a href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="magnetic-btn p-5 rounded-full border border-[#4e45f8]/40 text-[#F0EFF4] hover:bg-[#4e45f8] hover:border-[#4e45f8] transition-all shadow-[0_0_20px_rgba(78,69,248,0.2)]">
+            <Github size={24} />
           </a>
         </div>
       </div>
@@ -692,6 +770,7 @@ function App() {
       <AboutMe />
       <Resume />
       <Portfolio />
+      <LiveDashboard />
       <Footer />
     </main>
   );
